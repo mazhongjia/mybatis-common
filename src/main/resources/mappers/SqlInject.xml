@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mzj.dao.SqlInject">
+    <!--
+       mybatis 解决 SQL 注入问题
+        我们使用 mybatis 编写 SQL 语句时，难免会使用模糊查询的方法，mybatis 提供了两种方式 #{} 和 ${} 。
+
+        #{value} 在预处理时，会把参数部分用一个占位符 ? 替代，其中 value 表示接受输入参数的名称。能有效解决 SQL 注入问题
+        ${} 表示使用拼接字符串，将接受到参数的内容不加任何修饰符拼接在 SQL 中，使用${}拼接 sql，将引起 SQL 注入问题。
+     -->
+    <select id="testFindUserByNameFalse" parameterType="java.lang.String" resultType="com.mzj.pojo.User">
+        select * from tb_user WHERE user_name LIKE '%${value}%'
+    </select>
+
+    <select id="testFindUserByNameTrue" parameterType="java.lang.String" resultType="com.mzj.pojo.User">
+        select * from tb_user WHERE user_name LIKE CONCAT('%',#{value},'%' )
+    </select>
+
+</mapper>
+

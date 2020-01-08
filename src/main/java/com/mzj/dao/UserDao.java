@@ -8,8 +8,6 @@ package com.mzj.dao;
 import com.mzj.pojo.User;
 
 import java.util.List;
-import java.util.List;
-import java.util.List;
 
 public interface UserDao {
 
