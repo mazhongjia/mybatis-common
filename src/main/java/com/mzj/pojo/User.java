@@ -5,10 +5,12 @@ package com.mzj.pojo;
  * @Date: 2020/1/7 15:46
  * @Version: 1.0
  */
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
+
     private String id;
     private String userName;
     private String password;

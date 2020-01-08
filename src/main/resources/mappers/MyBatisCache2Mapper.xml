@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 ，为了使用接口动态代理，这里必须是接口的全路径名-->
+<mapper namespace="com.mzj.dao.MybatisCache2">
+    <!--开启二级缓存-->
+    <cache/>
+
+    <select id="queryUserById" resultType="com.mzj.pojo.User">
+        select * from tb_user where id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="com.mzj.pojo.User">
+        UPDATE tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null">user_name = #{userName},</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+            <if test="birthday!=null">birthday = #{birthday},</if>
+            updated = now(),
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+
+</mapper>
+

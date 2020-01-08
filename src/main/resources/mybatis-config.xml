@@ -11,6 +11,11 @@
         <property name="password" value="sunjinglei"/>
     </properties>
 
+    <!--开启驼峰匹配-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <plugins>
         <plugin interceptor="com.mzj.interceptor.ExamplePlugin">
             <property name="someProperty" value="100"/>
@@ -49,6 +54,10 @@
         <mapper resource="mappers/UserDaoMapper.xml"/>
         <mapper resource="mappers/UserMapper.xml"/>
         <mapper resource="mappers/SqlInject.xml"/>
+        <mapper resource="mappers/DynamicSql.xml"/>
+        <mapper resource="mappers/MyBatisCache1Mapper.xml"/>
+        <mapper resource="mappers/MyBatisCache2Mapper.xml"/>
+
     </mappers>
 
 </configuration>

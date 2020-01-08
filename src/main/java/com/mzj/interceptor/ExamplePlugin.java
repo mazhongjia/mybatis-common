@@ -18,11 +18,11 @@ import java.util.Properties;
         args = {MappedStatement.class,Object.class})})
 public class ExamplePlugin implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("11111");
+//        System.out.println("11111");
         return invocation.proceed();
     }
     public Object plugin(Object target) {
-        System.out.println("22222");
+//        System.out.println("22222");
         return Plugin.wrap(target, this);
     }
     public void setProperties(Properties properties) {
